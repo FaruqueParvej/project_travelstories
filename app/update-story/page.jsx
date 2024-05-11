@@ -6,11 +6,23 @@ import { Suspense, useEffect, useState } from "react";
 
 import Form from "@components/Form";
 
+function Search() {
+  const searchParams = useSearchParams();
+  const storyId = searchParams.get("id");
+
+  return <input placeholder="Search..." value={storyId} />;
+  {
+    /* Assuming you want to use storyId as the value of the input */
+  }
+}
+
 const EditStory = () => {
   const router = useRouter();
   const { data: session } = useSession();
-  const searchParams = useSearchParams();
-  const storyId = searchParams.get("id");
+
+  <Suspense fallback={<div>Loading...</div>}>
+    <Search />
+  </Suspense>;
 
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ story: "", tag: "" });
